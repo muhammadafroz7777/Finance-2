@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Counter Assignment</title>
+  </head>
+  <body>
+    <div class="parrent">
+      <div class="container_1">
+        <h1>Finance Website 
+            
+        </h1>
+        <input type="number" placeholder="Enter Your Amount" id="price" />
+        
+        <div class="container">
+          
+          <div class="box"><button onclick="incomeCalculator()">Income</button></div>
+          <div class="box"><button onclick="expenditureCalculator()">Expenditure</button></div>
+          
+          
+        </div>
+        <div class="spcontainer">
+          
+          <h3>Income: <span id="income"></span></h3>
+          <h3>Expenditure: <span id="expenditure"></span></h3>
+          <h3>Balance: <span id="balance"></span></h3>
+          
+        </div>
+      
+      </div>
+      <!-- --------------- -->
+      
+      <script>
+        let totalPrice = 0;
+        let totalExpenditure = 0;
+  
+        function incomeCalculator() {
+          let income = document.getElementById("income");
+          let price = parseFloat(document.getElementById("price").value);
+          if (price == "") {
+            alert("Please enter your income");
+          } else if (price < 0) {
+            alert("Please enter a valid income");
+          }
+  
+          totalPrice += price;
+          income.innerHTML = totalPrice;
+  
+          updateSummary();
+          clearInput();
+        }
+  
+        function expenditureCalculator() {
+          let income = document.getElementById("expenditure");
+          let price = parseFloat(document.getElementById("price").value);
+          if (price == "") {
+            alert("Please enter your income");
+          } else if (price < 0) {
+            alert("Please enter a valid income");
+          }
+  
+          totalExpenditure += price;
+          income.innerHTML = totalExpenditure;
+  
+          updateSummary();
+          clearInput();
+        }
+  
+        function updateSummary() {
+          let balance = document.getElementById("balance");
+  
+          let remainingBalace = totalPrice - totalExpenditure;
+  
+          balance.textContent = remainingBalace;
+        }
+  
+        function clearInput() {
+          document.getElementById("price").value = "";
+        }
+      </script>
+  </body>
+</html>
